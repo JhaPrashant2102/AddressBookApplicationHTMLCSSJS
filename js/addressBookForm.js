@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded",(event)=>{
     });
 });
 */
+let contactObj = new contact();
 window.addEventListener("DOMContentLoaded",(event)=>{
     const name = document.querySelector('#name');
     const textError = document.querySelector(".text-error");   
@@ -36,3 +37,24 @@ window.addEventListener("DOMContentLoaded",(event)=>{
         });
     }
 });
+const save = ()=>{
+    try{
+        setContactObject();
+    }catch(e){
+        return;
+    }
+    alert(contactObj.toString());
+}
+const setContactObject = ()=>{
+    try{
+        contactObj._name = document.querySelector('#name').value;
+        contactObj._phone = document.querySelector('#phone').value;
+        contactObj._address = document.querySelector('#address').value;
+        contactObj._city = document.querySelector('#city').value;
+        contactObj._state = document.querySelector('#state').value;
+        contactObj._zip = document.querySelector('#zip').value;
+    }catch(e){
+        alert("Please enter valid details!");
+    }
+   
+}
