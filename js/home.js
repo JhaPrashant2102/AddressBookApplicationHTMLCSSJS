@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     contactDetailsList = getContactDetailsFromLocalStorage();
     document.querySelector(".contact-count").textContent = contactDetailsList.length;
     createInnerHtml();
+    localStorage.removeItem('editContact');
 });
   
 const createInnerHtml = () => {
@@ -65,3 +66,10 @@ const remove = (node)=>{
     document.querySelector('.contact-count').textContent = contactDetailsList.length;
     createInnerHtml();
 }
+const update = (node) => {
+    let contact = contactDetailsList.find(contactObj => contactObj._id == node.id);
+    if(!contact) 
+        return;
+    localStorage.setItem('editEmp',JSON.stringify(contact))
+    window.location.replace(site_properties.add_contact_page);
+  }

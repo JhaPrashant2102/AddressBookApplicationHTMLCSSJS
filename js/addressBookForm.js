@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded",(event)=>{
 });
 */
 let contactObj = new Contact();
+let isUpdate = false;
 window.addEventListener("DOMContentLoaded",(event)=>{
     const name = document.querySelector('#name');
     const textError = document.querySelector(".text-error");   
@@ -37,6 +38,7 @@ window.addEventListener("DOMContentLoaded",(event)=>{
                 errorField.textContent="Invalid entry";
         });
     }
+    checkForUpdate();
 });
 const save = ()=>{
     try{
@@ -46,6 +48,7 @@ const save = ()=>{
         return;
     }
     alert(contactObj.toString());
+    resetForm();
 }
 const resetForm = ()=>{
     document.querySelector("#name").value = "";
@@ -80,4 +83,19 @@ const createAndUpdateStorage = ()=>{
 }
 const cancel = ()=>{
     window.location.replace(site_properties.home_page);
+}
+const checkForUpdate = () =>{
+    const contactJSON = localStorage.getItem('editEmp');
+    isUpdate = contactJSON ? true :false;
+    if(!isUpdate) return;
+    contactObj = JSON.parse(contactJSON);
+    setForm();
+}
+const setForm = () =>{
+    document.querySelector('#name').value = contactObj._name;
+    document.querySelector('#phone').value = contactObj._phone;
+    document.querySelector('#address').value= contactObj._address;
+    document.querySelector('#city').value = contactObj._city;
+    document.querySelector('#state').value = contactObj._state;
+    document.querySelector('#zip').value = contactObj._zip;
 }
