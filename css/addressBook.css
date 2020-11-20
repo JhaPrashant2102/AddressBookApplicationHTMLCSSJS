@@ -46,6 +46,7 @@ body{
     border: 0px solid green;
 }
 .form{
+    margin-top: 50px;
     width: 65%;
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 1px solid #00000029;
@@ -68,7 +69,6 @@ body{
     width: 40px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
-    align-items:center
 }
 .column-content{
     display: flex;
